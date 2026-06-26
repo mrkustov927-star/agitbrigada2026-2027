@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#651a24" />
+  <title>Фронтовая агитбригада — штаб проекта</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <section class="auth-screen" id="authScreen">
+    <div class="auth-card">
+      <div class="auth-brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img">
+            <circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M32 13l3.2 6.6 7.3 1.1-5.3 5.1 1.3 7.2-6.5-3.4-6.5 3.4 1.3-7.2-5.3-5.1 7.3-1.1z" fill="currentColor" opacity=".9"/>
+            <rect x="26" y="28" width="12" height="17" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M22 36a10 10 0 0 0 20 0M32 46v7M25 53h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div><strong>Фронтовая агитбригада</strong><span>Командный штаб проекта</span></div>
+      </div>
+      <div class="eyebrow">Защищённый доступ</div>
+      <h1 id="authTitle">Войти в штаб проекта</h1>
+      <p id="authSubtitle">Используйте рабочую электронную почту и пароль.</p>
+      <form id="authForm" class="auth-form">
+        <label id="authFullName" class="hidden">ФИО<input name="full_name" autocomplete="name" placeholder="Иван Иванов"></label>
+        <label>Электронная почта<input name="email" type="email" autocomplete="email" required placeholder="name@example.ru"></label>
+        <label>Пароль<input name="password" type="password" autocomplete="current-password" minlength="8" required placeholder="Не менее 8 символов"></label>
+        <button class="btn btn-primary btn-block" id="authSubmit" type="submit">Войти</button>
+      </form>
+      <div class="auth-message" id="authMessage"></div>
+      <button class="btn btn-ghost btn-block" id="authModeButton" type="button">Создать аккаунт</button>
+      <p class="auth-note">Данные проекта доступны только участникам команды. Первый зарегистрированный пользователь назначается руководителем проекта.</p>
+    </div>
+  </section>
+
+  <div class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img">
+            <circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M32 13l3.2 6.6 7.3 1.1-5.3 5.1 1.3 7.2-6.5-3.4-6.5 3.4 1.3-7.2-5.3-5.1 7.3-1.1z" fill="currentColor" opacity=".9"/>
+            <rect x="26" y="28" width="12" height="17" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M22 36a10 10 0 0 0 20 0M32 46v7M25 53h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <strong>Фронтовая<br>агитбригада</strong>
+          <span>Штаб проекта</span>
+        </div>
+      </div>
+      <nav class="nav" id="nav"></nav>
+      <div class="sidebar-foot">
+        <div class="project-dates" id="projectDates"></div>
+        <button class="btn btn-ghost btn-block" data-action="backup">Скачать резервную копию</button>
+      </div>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Открыть меню">☰</button>
+        <div>
+          <div class="eyebrow" id="pageEyebrow">Управление проектом</div>
+          <h1 id="pageTitle">Панель управления</h1>
+        </div>
+        <div class="topbar-actions">
+          <div class="sync-state"><span class="dot"></span><span>Данные сохранены в браузере</span></div>
+          <button class="btn btn-primary" data-action="quick-add">+ Быстро добавить</button>
+        </div>
+      </header>
+      <main id="app" class="content" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <div>
+          <div class="eyebrow" id="modalEyebrow">Редактирование</div>
+          <h2 id="modalTitle">Карточка</h2>
+        </div>
+        <button class="icon-button" data-action="close-modal" aria-label="Закрыть">×</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-foot" id="modalFoot"></div>
+    </section>
+  </div>
+
+  <div class="toast-stack" id="toastStack"></div>
+  <input type="file" id="hiddenFileInput" class="hidden" />
+  <script type="module" src="./bootstrap.js"></script>
+</body>
+</html>
