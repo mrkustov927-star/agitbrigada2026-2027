@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js';
-import './public-timeline.js';
 import './timeline-contrast-fix.css';
 
 const PROJECT_CODE = import.meta.env.VITE_PROJECT_CODE || 'AGITBRIGADA-2026-2027';
@@ -9,6 +8,12 @@ const AUTH_REDIRECT_URL = `${window.location.origin}${window.location.pathname.r
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
   auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
 });
+
+window.PUBLIC_AGIT = {
+  supabase,
+  projectCode: PROJECT_CODE,
+};
+await import('./public-timeline-live.js');
 
 const publicHome = document.getElementById('publicHome');
 const authScreen = document.getElementById('authScreen');
