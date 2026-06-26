@@ -144,7 +144,7 @@ async function openApp(session) {
     projectCode: PROJECT_CODE,
   };
   showApp();
-  await import('./app-v3.js');
+  await import('./app-v4.js');
 }
 
 form.addEventListener('submit', async event => {
