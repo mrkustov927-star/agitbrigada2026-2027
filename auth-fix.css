@@ -1,0 +1,21 @@
+/* Контрастные элементы формы авторизации */
+.auth-card #authModeButton {
+  margin-top: 10px;
+  min-height: 46px;
+  background: #fff8f1;
+  color: #651a24;
+  border: 1px solid #c9aaa4;
+  box-shadow: none;
+  font-weight: 800;
+}
+
+.auth-card #authModeButton:hover {
+  background: #f3e5db;
+  border-color: #8d2f39;
+  color: #651a24;
+}
+
+.auth-card #authModeButton:focus-visible {
+  outline: 3px solid rgba(101, 26, 36, .18);
+  outline-offset: 2px;
+}
