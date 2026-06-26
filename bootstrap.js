@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import './public-timeline.js';
 import './timeline-contrast-fix.css';
 
 const PROJECT_CODE = import.meta.env.VITE_PROJECT_CODE || 'AGITBRIGADA-2026-2027';
@@ -8,15 +9,6 @@ const AUTH_REDIRECT_URL = `${window.location.origin}${window.location.pathname.r
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
   auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
 });
-
-// Сначала всегда показываем резервный публичный таймлайн.
-// Затем, если Supabase отвечает успешно, заменяем его актуальными данными из базы.
-await import('./public-timeline.js');
-window.PUBLIC_AGIT = {
-  supabase,
-  projectCode: PROJECT_CODE,
-};
-await import('./public-timeline-live.js');
 
 const publicHome = document.getElementById('publicHome');
 const authScreen = document.getElementById('authScreen');
