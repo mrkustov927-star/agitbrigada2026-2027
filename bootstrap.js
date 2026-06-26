@@ -144,8 +144,7 @@ async function openApp(session) {
     projectCode: PROJECT_CODE,
   };
   showApp();
-  await import('./app-v2.js');
-  await import('./closed-actualization-loader-v2.js');
+  await import('./app-v3.js');
 }
 
 form.addEventListener('submit', async event => {
