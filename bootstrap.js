@@ -10,6 +10,12 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
   auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
 });
 
+window.PUBLIC_AGIT = {
+  supabase,
+  projectCode: PROJECT_CODE,
+};
+await import('./public-timeline-live.js');
+
 const publicHome = document.getElementById('publicHome');
 const authScreen = document.getElementById('authScreen');
 const appShell = document.querySelector('.app-shell');
