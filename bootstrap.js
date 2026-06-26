@@ -145,7 +145,7 @@ async function openApp(session) {
   };
   showApp();
   await import('./app-v2.js');
-  await import('./closed-actualization-loader.js');
+  await import('./closed-actualization-loader-v2.js');
 }
 
 form.addEventListener('submit', async event => {
