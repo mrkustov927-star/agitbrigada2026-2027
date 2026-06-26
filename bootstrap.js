@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import './public-timeline.js';
 
 const PROJECT_CODE = import.meta.env.VITE_PROJECT_CODE || 'AGITBRIGADA-2026-2027';
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://uqzclxuziytjmkscagey.supabase.co';
@@ -144,7 +145,7 @@ async function openApp(session) {
     projectCode: PROJECT_CODE,
   };
   showApp();
-  await import('./app-v4.js');
+  await import('./app-v5.js');
 }
 
 form.addEventListener('submit', async event => {
