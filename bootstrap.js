@@ -9,6 +9,9 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
   auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
 });
 
+// Сначала всегда показываем резервный публичный таймлайн.
+// Затем, если Supabase отвечает успешно, заменяем его актуальными данными из базы.
+await import('./public-timeline.js');
 window.PUBLIC_AGIT = {
   supabase,
   projectCode: PROJECT_CODE,
