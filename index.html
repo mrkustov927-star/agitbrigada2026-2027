@@ -4,12 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#651a24" />
-  <meta name="description" content="Фронтовая агитбригада — интерактивный историко-просветительский проект для молодёжи 14–35 лет в Кеми." />
+  <meta name="description" content="Фронтовая агитбригада — интерактивный историко-просветительский проект для молодёжи 14–35 лет в Кемском муниципальном округе." />
   <title>Фронтовая агитбригада — проект и командный штаб</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="auth-fix.css?v=2" />
-  <link rel="stylesheet" href="public.css?v=1" />
+  <link rel="stylesheet" href="public.css?v=2" />
+  <link rel="stylesheet" href="public-updates.css?v=1" />
 </head>
 <body>
   <section class="public-home" id="publicHome">
@@ -29,7 +30,8 @@
         <nav class="public-nav" aria-label="Навигация по проекту">
           <a href="#about">О проекте</a>
           <a href="#formats">Форматы</a>
-          <a href="#roadmap">Ключевые этапы</a>
+          <a href="#calendar">Календарь</a>
+          <a href="#team">Команда</a>
           <button class="public-login-button" type="button" data-open-login>Войти в штаб</button>
         </nav>
       </div>
@@ -39,16 +41,16 @@
       <section class="public-hero">
         <div class="public-container public-hero-grid">
           <div>
-            <div class="public-kicker">Республика Карелия · город Кемь</div>
+            <div class="public-kicker">Республика Карелия · Кемский муниципальный округ</div>
             <h1>История, которую можно увидеть, услышать и прожить</h1>
             <p class="public-hero-lead">«Фронтовая агитбригада» — комплекс образовательных, культурных и просветительских мероприятий для гражданско-патриотического и историко-культурного воспитания молодёжи через интерактивную историческую площадку и сохранение памяти о Великой Отечественной войне.</p>
             <div class="public-chips">
               <span class="public-chip">Сроки: август 2026 — июнь 2027</span>
               <span class="public-chip">Целевая группа: молодёжь 14–35 лет</span>
-              <span class="public-chip">Масштаб: муниципальный</span>
+              <span class="public-chip">Дата завершения: 30 июня 2027 года</span>
             </div>
             <div class="public-hero-actions">
-              <a class="public-primary" href="#roadmap">Посмотреть этапы</a>
+              <a class="public-primary" href="#calendar">Открыть календарь</a>
               <button class="public-secondary" type="button" data-open-login>Командный штаб</button>
             </div>
           </div>
@@ -67,11 +69,12 @@
           <div class="public-section-heading">
             <div class="eyebrow">Плановые результаты</div>
             <h2>Ключевые показатели проекта</h2>
-            <p>Показатели зафиксированы в проектной заявке и календарном плане.</p>
+            <p>Количественные показатели отражены строго по утверждённому календарному плану.</p>
           </div>
-          <div class="public-metrics">
-            <article class="public-metric"><strong>12</strong><span>отчётных этапов календарного плана</span></article>
+          <div class="public-metrics public-metrics-five">
+            <article class="public-metric"><strong>12</strong><span>официальных строк календарного плана</span></article>
             <article class="public-metric"><strong>1 000</strong><span>уникальных участников 14–35 лет</span></article>
+            <article class="public-metric"><strong>220</strong><span>повторных участий в игровых и итоговых активностях</span></article>
             <article class="public-metric"><strong>57</strong><span>информационных публикаций</span></article>
             <article class="public-metric"><strong>52 000</strong><span>плановых просмотров материалов</span></article>
           </div>
@@ -105,40 +108,119 @@
             <p>Основные направления собраны из утверждённого описания и календарного плана проекта.</p>
           </div>
           <div class="public-formats">
-            <article class="public-format-card"><div class="public-format-num">01</div><h3>Историческая реконструкция</h3><p>Цикл открытых мастер-классов, знакомство с предметами, бытом и историческим контекстом эпохи.</p></article>
-            <article class="public-format-card"><div class="public-format-num">02</div><h3>Интерактивные уроки</h3><p>Не менее десяти занятий для молодёжи, включая уроки мужества и встречи с поисковыми отрядами.</p></article>
-            <article class="public-format-card"><div class="public-format-num">03</div><h3>Квесты и игры</h3><p>Игра «Разведка», исторические квесты, интеллектуальные форматы и городская игра «Судьбы времён».</p></article>
+            <article class="public-format-card"><div class="public-format-num">01</div><h3>Историческая реконструкция</h3><p>Четыре открытых мастер-класса: исторические источники, архивный поиск, фронтовой быт, связь и медицинская помощь.</p></article>
+            <article class="public-format-card"><div class="public-format-num">02</div><h3>Интерактивные уроки</h3><p>Десять занятий для молодёжи, включая уроки мужества, работу с локальной историей и историческими документами.</p></article>
+            <article class="public-format-card"><div class="public-format-num">03</div><h3>Квесты и игры</h3><p>Квесты, интеллектуальные игры, «Разведка» и комплекс активностей «Судьбы времён».</p></article>
             <article class="public-format-card"><div class="public-format-num">04</div><h3>Истории семьи</h3><p>Конкурс «Истории моей семьи» и выставка семейных реликвий, объединяющие личную и общую историю.</p></article>
-            <article class="public-format-card"><div class="public-format-num">05</div><h3>Площадка ко Дню Победы</h3><p>Главное массовое событие проекта — интерактивная площадка «Фронтовая агитбригада» в городе Кеми.</p></article>
+            <article class="public-format-card"><div class="public-format-num">05</div><h3>Площадка ко Дню Победы</h3><p>Главное массовое событие проекта — интерактивная площадка «Фронтовая агитбригада» 9 мая 2027 года.</p></article>
             <article class="public-format-card"><div class="public-format-num">06</div><h3>Медиа и финальная выставка</h3><p>Ролики, интервью, публикации и итоговая мультимедийная выставка «Агитбригада в лицах и событиях».</p></article>
           </div>
         </div>
       </section>
 
-      <section class="public-section" id="roadmap">
+      <section class="public-section" id="calendar">
         <div class="public-container">
           <div class="public-section-heading">
             <div class="eyebrow">Август 2026 — июнь 2027</div>
-            <h2>Ключевые точки реализации</h2>
-            <p>Публичная дорожная карта отражает основные содержательные этапы календарного плана.</p>
+            <h2>Календарь реализации проекта</h2>
+            <p>В календаре сохранены 12 официальных строк проекта. Вложенные мастер-классы, уроки, игры и экскурсии показывают рабочие даты и распределение охвата внутри соответствующей строки.</p>
           </div>
-          <div class="public-roadmap">
-            <article class="public-roadmap-item"><div class="public-roadmap-date">Август 2026</div><h3>Запуск проекта</h3><p>Визуальное оформление, информационная кампания и первые пресс-релизы.</p></article>
-            <article class="public-roadmap-item"><div class="public-roadmap-date">Сентябрь 2026</div><h3>Организационная подготовка</h3><p>Планы команды, закупки, договоры и подготовка материальной базы.</p></article>
-            <article class="public-roadmap-item"><div class="public-roadmap-date">Октябрь 2026</div><h3>Мастер-классы</h3><p>Цикл мероприятий по исторической реконструкции.</p></article>
-            <article class="public-roadmap-item"><div class="public-roadmap-date">До декабря 2026</div><h3>Интерактивные уроки</h3><p>Десять просветительских занятий и уроков мужества.</p></article>
-            <article class="public-roadmap-item"><div class="public-roadmap-date">Январь — февраль 2027</div><h3>Квесты и исторические игры</h3><p>Командные задания, «Разведка» и городская игра «Судьбы времён».</p></article>
-            <article class="public-roadmap-item"><div class="public-roadmap-date">Март 2027</div><h3>«Истории моей семьи»</h3><p>Городской конкурс и выставка семейных реликвий.</p></article>
-            <article class="public-roadmap-item"><div class="public-roadmap-date">Май 2027</div><h3>Главные события</h3><p>Площадка ко Дню Победы и финальная мультимедийная выставка.</p></article>
-            <article class="public-roadmap-item"><div class="public-roadmap-date">Июнь 2027</div><h3>Итоги и развитие</h3><p>Анализ результатов, итоговые публикации и завершение отчётности.</p></article>
+
+          <div class="public-calendar-summary">
+            <div class="public-summary-card"><strong>1 000 уникальных</strong><span>100 + 200 + 100 + 100 + 400 + 100 участников по содержательным блокам</span></div>
+            <div class="public-summary-card"><strong>220 повторных</strong><span>200 повторных участий в игровом блоке и 20 — на итоговой встрече</span></div>
+            <div class="public-summary-card"><strong>57 / 52 000</strong><span>публикации и просмотры распределены по всем 12 строкам календаря</span></div>
+          </div>
+
+          <div class="public-calendar-list">
+            <article class="public-calendar-card">
+              <div class="public-calendar-deadline"><span class="public-calendar-number">01</span><strong>до 20 августа 2026</strong><span>официальный срок</span></div>
+              <div class="public-calendar-content"><h3>Визуальное оформление проекта</h3><p>Разработка фирменного стиля, основных макетов и визуального представления проекта.</p><div class="public-calendar-tags"><span class="public-calendar-tag">Участники: 0</span><span class="public-calendar-tag">1 публикация</span><span class="public-calendar-tag">500 просмотров</span></div><div class="public-responsible"><strong>Ответственные:</strong> Иван Брунов, Анастасия Таран.</div></div>
+            </article>
+
+            <article class="public-calendar-card">
+              <div class="public-calendar-deadline"><span class="public-calendar-number">02</span><strong>до 31 августа 2026</strong><span>официальный срок</span></div>
+              <div class="public-calendar-content"><h3>Стартовая информационная кампания</h3><p>Пять материалов: презентация проекта, цель и задачи, форматы, команда и приглашение к участию.</p><div class="public-calendar-tags"><span class="public-calendar-tag">Участники: 0</span><span class="public-calendar-tag">5 публикаций</span><span class="public-calendar-tag">4 000 просмотров</span></div><div class="public-responsible"><strong>Ответственные:</strong> Иван Брунов, Евгений Кустов, Анастасия Таран.</div></div>
+            </article>
+
+            <article class="public-calendar-card">
+              <div class="public-calendar-deadline"><span class="public-calendar-number">03</span><strong>до 30 сентября 2026</strong><span>официальный срок</span></div>
+              <div class="public-calendar-content"><h3>Организационная подготовка</h3><p>Не менее четырёх собраний рабочей группы, договорная работа, закупки, подготовка площадок, графика и форм регистрации.</p><div class="public-calendar-tags"><span class="public-calendar-tag">Участники: 0</span><span class="public-calendar-tag">1 публикация</span><span class="public-calendar-tag">500 просмотров</span></div><div class="public-responsible"><strong>Ответственные:</strong> Иван Брунов, Евгений Кустов, Виктор Антонов, Виктория Панкратова.</div></div>
+            </article>
+
+            <article class="public-calendar-card public-calendar-card-featured">
+              <div class="public-calendar-deadline"><span class="public-calendar-number">04</span><strong>до 30 октября 2026</strong><span>4 мастер-класса</span></div>
+              <div class="public-calendar-content"><h3>Мастер-классы по исторической реконструкции</h3><p>Четыре отдельные школьные активности по 25 новых участников.</p><div class="public-subevents"><div class="public-subevent"><strong>3 сентября</strong><span>Окончание Второй мировой войны: карта, хроника, исторические предметы — 25 человек</span></div><div class="public-subevent"><strong>10 сентября</strong><span>Исторический источник: письмо, фотография, семейный документ — 25 человек</span></div><div class="public-subevent"><strong>9 октября</strong><span>Полевой быт, связь и медицинская помощь — 25 человек</span></div><div class="public-subevent"><strong>23 октября</strong><span>Архивный поиск: как восстановить судьбу человека — 25 человек</span></div></div><div class="public-calendar-tags"><span class="public-calendar-tag public-calendar-tag-accent">100 уникальных</span><span class="public-calendar-tag">5 публикаций</span><span class="public-calendar-tag">3 000 просмотров</span></div><div class="public-responsible"><strong>Ответственные:</strong> Егор Дыкуль, Валерия Синявина; взаимодействие со школами — Евгений Кустов.</div></div>
+            </article>
+
+            <article class="public-calendar-card public-calendar-card-featured">
+              <div class="public-calendar-deadline"><span class="public-calendar-number">05</span><strong>до 31 декабря 2026</strong><span>10 занятий</span></div>
+              <div class="public-calendar-content"><h3>Интерактивные уроки и уроки мужества</h3><p>Десять занятий по 20 новых участников. Исключённые даты 4 ноября и 12 декабря в календарь не включены.</p><div class="public-subevents"><div class="public-subevent"><strong>6 ноября</strong><span>Карельский фронт: история рядом с нами — 20 человек</span></div><div class="public-subevent"><strong>13 ноября</strong><span>Фронтовая агитбригада: слово, музыка и поддержка бойцов — 20 человек</span></div><div class="public-subevent"><strong>20 ноября</strong><span>Один день полевого штаба — 20 человек</span></div><div class="public-subevent"><strong>27 ноября</strong><span>Фронтовой корреспондент и военная газета — 20 человек</span></div><div class="public-subevent"><strong>3 декабря</strong><span>Вернуть имя: День Неизвестного Солдата — 20 человек</span></div><div class="public-subevent"><strong>4 декабря</strong><span>Волонтёры исторической памяти — 20 человек</span></div><div class="public-subevent"><strong>9 декабря</strong><span>Герои Отечества и жители Кемского округа — 20 человек</span></div><div class="public-subevent"><strong>11 декабря</strong><span>Письмо с фронта как исторический источник — 20 человек</span></div><div class="public-subevent"><strong>17 декабря</strong><span>История одного предмета — 20 человек</span></div><div class="public-subevent"><strong>22 декабря</strong><span>Итоговый интерактивный урок-квиз — 20 человек</span></div></div><div class="public-calendar-tags"><span class="public-calendar-tag public-calendar-tag-accent">200 уникальных</span><span class="public-calendar-tag">5 публикаций</span><span class="public-calendar-tag">3 000 просмотров</span></div><div class="public-responsible"><strong>Ответственные:</strong> Валерия Синявина, Евгений Кустов; историческая часть — Егор Дыкуль.</div></div>
+            </article>
+
+            <article class="public-calendar-card public-calendar-card-featured">
+              <div class="public-calendar-deadline"><span class="public-calendar-number">06</span><strong>до 28 февраля 2027</strong><span>игровой блок</span></div>
+              <div class="public-calendar-content"><h3>Исторические квесты и интеллектуальные игры</h3><p>Пять активностей формируют 300 посещений: 100 первых участий и 200 повторных.</p><div class="public-subevents"><div class="public-subevent"><strong>27 января</strong><span>Квест «Блокадный маршрут» — 60 посещений</span></div><div class="public-subevent"><strong>2 февраля</strong><span>Интеллектуальная игра «Перелом» — 60 посещений</span></div><div class="public-subevent"><strong>15 февраля</strong><span>Игра «Служение Отечеству: связь поколений» — 60 посещений</span></div><div class="public-subevent"><strong>18 февраля</strong><span>Исторический квест «Разведка» — 60 посещений</span></div><div class="public-subevent"><strong>23 февраля</strong><span>Комплекс активностей «Судьбы времён» — 60 посещений</span></div></div><div class="public-calendar-tags"><span class="public-calendar-tag public-calendar-tag-accent">100 уникальных</span><span class="public-calendar-tag public-calendar-tag-accent">200 повторных</span><span class="public-calendar-tag">13 публикаций</span><span class="public-calendar-tag">16 000 просмотров</span></div><div class="public-responsible"><strong>Ответственные:</strong> Егор Дыкуль — квесты и интеллектуальные игры; <strong>Анастасия Таран — подготовка и проведение комплекса активностей «Судьбы времён»</strong>.</div></div>
+            </article>
+
+            <article class="public-calendar-card public-calendar-card-featured">
+              <div class="public-calendar-deadline"><span class="public-calendar-number">07</span><strong>до 31 марта 2027</strong><span>конкурс и выставка</span></div>
+              <div class="public-calendar-content"><h3>«Истории моей семьи»</h3><p>Сбор семейных историй и документов, творческий финал «Письма, которые заговорили» и выставка семейных реликвий.</p><div class="public-calendar-tags"><span class="public-calendar-tag public-calendar-tag-accent">100 уникальных</span><span class="public-calendar-tag">5 публикаций</span><span class="public-calendar-tag">4 000 просмотров</span></div><div class="public-responsible"><strong>Ответственные:</strong> Валерия Синявина, Евгений Кустов, Виктория Панкратова.</div></div>
+            </article>
+
+            <article class="public-calendar-card public-calendar-card-featured">
+              <div class="public-calendar-deadline"><span class="public-calendar-number">08</span><strong>9 мая 2027</strong><span>главное событие</span></div>
+              <div class="public-calendar-content"><h3>Интерактивная площадка «Фронтовая агитбригада»</h3><p>Фронтовая редакция, полевая почта, связь, медицинский пост, историческая разведка, семейный архив и другие станции.</p><div class="public-calendar-tags"><span class="public-calendar-tag public-calendar-tag-accent">400 уникальных</span><span class="public-calendar-tag">5 публикаций</span><span class="public-calendar-tag">4 000 просмотров</span></div><div class="public-responsible"><strong>Ответственные:</strong> Иван Брунов; программа — Егор Дыкуль и Валерия Синявина; школы — Евгений Кустов; техника — Виктор Антонов; регистрация — Виктория Панкратова.</div></div>
+            </article>
+
+            <article class="public-calendar-card public-calendar-card-featured">
+              <div class="public-calendar-deadline"><span class="public-calendar-number">09</span><strong>до 31 мая 2027</strong><span>финальная выставка</span></div>
+              <div class="public-calendar-content"><h3>«Агитбригада в лицах и событиях»</h3><p>Открытие выставки и три организованные экскурсии для новых участников.</p><div class="public-subevents"><div class="public-subevent"><strong>19 мая</strong><span>Открытие выставки — 40 человек</span></div><div class="public-subevent"><strong>21 мая</strong><span>Первая организованная экскурсия — 20 человек</span></div><div class="public-subevent"><strong>25 мая</strong><span>Вторая организованная экскурсия — 20 человек</span></div><div class="public-subevent"><strong>28 мая</strong><span>Третья организованная экскурсия — 20 человек</span></div></div><div class="public-calendar-tags"><span class="public-calendar-tag public-calendar-tag-accent">100 уникальных</span><span class="public-calendar-tag">5 публикаций</span><span class="public-calendar-tag">4 000 просмотров</span></div><div class="public-responsible"><strong>Ответственные:</strong> Валерия Синявина, Евгений Кустов, Виктор Антонов, Виктория Панкратова.</div></div>
+            </article>
+
+            <article class="public-calendar-card">
+              <div class="public-calendar-deadline"><span class="public-calendar-number">10</span><strong>10 июня 2027</strong><span>итоговая встреча</span></div>
+              <div class="public-calendar-content"><h3>Итоговое собрание рабочей группы и партнёров</h3><p>Подведение итогов проекта с участием рабочей группы, не менее десяти партнёров и ранее зарегистрированных молодых участников.</p><div class="public-calendar-tags"><span class="public-calendar-tag public-calendar-tag-accent">20 повторных</span><span class="public-calendar-tag">1 публикация</span><span class="public-calendar-tag">500 просмотров</span></div><div class="public-responsible"><strong>Ответственные:</strong> Иван Брунов, Евгений Кустов, Виктория Панкратова.</div></div>
+            </article>
+
+            <article class="public-calendar-card">
+              <div class="public-calendar-deadline"><span class="public-calendar-number">11</span><strong>до 20 июня 2027</strong><span>итоговая медиаволна</span></div>
+              <div class="public-calendar-content"><h3>Публикация итоговых материалов</h3><p>Десять материалов: истории участников, школьных команд, семейных реликвий, волонтёров, партнёров, фотоподборка и итоговый видеоролик.</p><div class="public-calendar-tags"><span class="public-calendar-tag">Участники: 0</span><span class="public-calendar-tag">10 публикаций</span><span class="public-calendar-tag">12 000 просмотров</span></div><div class="public-responsible"><strong>Ответственные:</strong> Иван Брунов и рабочая группа проекта.</div></div>
+            </article>
+
+            <article class="public-calendar-card">
+              <div class="public-calendar-deadline"><span class="public-calendar-number">12</span><strong>до 30 июня 2027</strong><span>завершение проекта</span></div>
+              <div class="public-calendar-content"><h3>Итоговая содержательная и финансовая отчётность</h3><p>Финальная проверка результатов проекта, подтверждающих материалов и публикация информации о завершении реализации.</p><div class="public-calendar-tags"><span class="public-calendar-tag">Участники: 0</span><span class="public-calendar-tag">1 публикация</span><span class="public-calendar-tag">500 просмотров</span></div><div class="public-responsible"><strong>Ответственный:</strong> Иван Брунов; сведения и материалы предоставляет вся рабочая группа.</div></div>
+            </article>
+          </div>
+
+          <div class="public-note"><strong>Правило учёта:</strong> один человек, принявший участие в нескольких содержательных блоках, остаётся одним уникальным участником проекта. Поэтому количественный охват в календаре распределён так, чтобы итог строго составлял 1 000 уникальных участников.</div>
+        </div>
+      </section>
+
+      <section class="public-section public-section-alt" id="team">
+        <div class="public-container">
+          <div class="public-section-heading">
+            <div class="eyebrow">Текущий состав</div>
+            <h2>Рабочая группа проекта</h2>
+            <p>Распределение отражает текущие зоны ответственности на этапе подготовки проекта.</p>
+          </div>
+          <div class="public-team-grid">
+            <article class="public-team-card public-team-card-lead"><div class="public-team-initials">ИБ</div><h3>Иван Брунов</h3><p>Руководство проектом, общий контроль, договорная работа, закупки, партнёры и завершение отчётности.</p><span class="public-team-focus">Руководитель проекта</span></article>
+            <article class="public-team-card"><div class="public-team-initials">ЕК</div><h3>Евгений Кустов</h3><p>Взаимодействие со школами и Движением Первых, формирование групп, согласование площадок и календаря.</p><span class="public-team-focus">Школьная координация</span></article>
+            <article class="public-team-card"><div class="public-team-initials">ВС</div><h3>Валерия Синявина</h3><p>Образовательные программы, интерактивные уроки, методические материалы и конкурс «Истории моей семьи».</p><span class="public-team-focus">Содержание и методика</span></article>
+            <article class="public-team-card"><div class="public-team-initials">ЕД</div><h3>Егор Дыкуль</h3><p>Историческая реконструкция, мастер-классы, квесты и интеллектуальные игры игрового блока.</p><span class="public-team-focus">Исторические активности</span></article>
+            <article class="public-team-card public-team-card-lead"><div class="public-team-initials">АТ</div><h3>Анастасия Таран</h3><p>Разработка сценария, станций, заданий и организация комплекса активностей «Судьбы времён».</p><span class="public-team-focus">Ответственная за «Судьбы времён»</span></article>
+            <article class="public-team-card"><div class="public-team-initials">ВА</div><h3>Виктор Антонов</h3><p>Оборудование, реквизит, монтаж площадок, техническое обеспечение и безопасность.</p><span class="public-team-focus">Техническое направление</span></article>
+            <article class="public-team-card"><div class="public-team-initials">ВП</div><h3>Виктория Панкратова</h3><p>Регистрация участников, учёт уникальности и повторных посещений, согласия и подтверждающие материалы.</p><span class="public-team-focus">Учёт участников</span></article>
           </div>
         </div>
       </section>
 
-      <section class="public-section public-section-alt">
+      <section class="public-section">
         <div class="public-container">
           <div class="public-final-cta">
-            <div><h2>Внутренний штаб команды</h2><p>Планирование, участники, публикации, бюджет, документы и отчётность доступны только авторизованным участникам проектной команды.</p></div>
+            <div><h2>Внутренний штаб команды</h2><p>Фактические результаты, персональные данные участников, документы, бюджет, публикации и редактирование доступны только авторизованным участникам рабочей группы.</p></div>
             <button class="public-primary" type="button" data-open-login>Войти под паролем</button>
           </div>
         </div>
@@ -148,7 +230,7 @@
     <footer class="public-footer">
       <div class="public-container public-footer-inner">
         <span>Проект «Фронтовая агитбригада» · Республика Карелия · 2026–2027</span>
-        <span>Публичная информация — из утверждённой проектной заявки</span>
+        <span>Публичный календарь и плановые показатели проекта</span>
       </div>
     </footer>
   </section>
