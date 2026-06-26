@@ -71,7 +71,3 @@ $$;
 
 revoke all on function public.get_project_kpis(uuid) from public;
 grant execute on function public.get_project_kpis(uuid) to authenticated;
-
--- Проверка: запрос должен вернуть одну строку без ошибки.
-select *
-from public.get_project_kpis('fa202627-2026-4000-8000-000000000001'::uuid);
