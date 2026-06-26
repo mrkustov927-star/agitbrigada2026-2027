@@ -18,6 +18,7 @@ const toggle = document.getElementById('authModeButton');
 const authBackButton = document.getElementById('authBackButton');
 let mode = 'signin';
 let appOpened = false;
+let activeSession = null;
 
 function message(text = '', type = '') {
   msg.textContent = text;
@@ -37,11 +38,20 @@ function setMode(next) {
   message();
 }
 
+function updatePublicButtons() {
+  document.querySelectorAll('[data-open-login]').forEach(button => {
+    if (activeSession && button.classList.contains('public-login-button')) {
+      button.textContent = 'Открыть штаб';
+    }
+  });
+}
+
 function showPublic() {
   appShell.classList.add('hidden');
   authScreen.classList.add('hidden');
   publicHome.classList.remove('hidden');
   document.body.style.overflow = '';
+  updatePublicButtons();
 }
 
 function showAuth() {
@@ -59,6 +69,14 @@ function showApp() {
 }
 
 function openLogin() {
+  if (activeSession) {
+    openApp(activeSession).catch(error => {
+      appOpened = false;
+      showAuth();
+      message(error.message || 'Не удалось открыть проект.', 'error');
+    });
+    return;
+  }
   setMode('signin');
   showAuth();
 }
@@ -99,7 +117,12 @@ async function resolveMembership(user) {
 }
 
 async function openApp(session) {
-  if (appOpened) return;
+  if (appOpened) {
+    showApp();
+    return;
+  }
+
+  activeSession = session;
   showAuth();
   message('Проверяем доступ к проекту…');
   const membership = await resolveMembership(session.user);
@@ -155,11 +178,13 @@ form.addEventListener('submit', async event => {
         setMode('signin');
         message('Регистрация выполнена. Подтвердите e-mail по ссылке из письма, затем войдите.', 'success');
       } else {
+        activeSession = data.session;
         await openApp(data.session);
       }
     } else {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
+      activeSession = data.session;
       await openApp(data.session);
     }
   } catch (error) {
@@ -173,27 +198,18 @@ toggle.addEventListener('click', () => setMode(mode === 'signin' ? 'signup' : 's
 
 supabase.auth.onAuthStateChange((event, session) => {
   if (event === 'SIGNED_OUT') {
+    activeSession = null;
     appOpened = false;
     window.location.reload();
   }
-  if (event === 'SIGNED_IN' && session && !appOpened) {
-    openApp(session).catch(error => {
-      appOpened = false;
-      showAuth();
-      message(error.message || 'Не удалось открыть проект.', 'error');
-    });
+
+  if (event === 'SIGNED_IN' && session) {
+    activeSession = session;
+    updatePublicButtons();
   }
 });
 
 setMode('signin');
 const { data: { session } } = await supabase.auth.getSession();
-
-if (session) {
-  openApp(session).catch(error => {
-    appOpened = false;
-    showAuth();
-    message(`Не удалось открыть проект: ${error.message}`, 'error');
-  });
-} else {
-  showPublic();
-}
+activeSession = session || null;
+showPublic();
