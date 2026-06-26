@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import './public-timeline.js';
+import './timeline-contrast-fix.css';
 
 const PROJECT_CODE = import.meta.env.VITE_PROJECT_CODE || 'AGITBRIGADA-2026-2027';
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://uqzclxuziytjmkscagey.supabase.co';
