@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 const PROJECT_CODE = import.meta.env.VITE_PROJECT_CODE || 'AGITBRIGADA-2026-2027';
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://uqzclxuziytjmkscagey.supabase.co';
 const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_LqEQm1N_I7KhXe3SnsvGRw_TA3z4jxJ';
+const AUTH_REDIRECT_URL = `${window.location.origin}${window.location.pathname.replace(/[^/]*$/, '')}`;
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
   auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
 });
@@ -70,7 +71,14 @@ form.addEventListener('submit', async (event) => {
   message(mode === 'signup' ? 'Создаём аккаунт…' : 'Выполняем вход…');
   try {
     if (mode === 'signup') {
-      const { data, error } = await supabase.auth.signUp({ email, password, options: { data: { full_name: fullName || email } } });
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { full_name: fullName || email },
+          emailRedirectTo: AUTH_REDIRECT_URL,
+        },
+      });
       if (error) throw error;
       if (!data.session) {
         setMode('signin');
