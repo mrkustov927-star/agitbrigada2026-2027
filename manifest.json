@@ -1,0 +1,9 @@
+{
+  "name": "Фронтовая агитбригада — штаб проекта",
+  "short_name": "Агитбригада",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4efe5",
+  "theme_color": "#651a24",
+  "icons": []
+}
