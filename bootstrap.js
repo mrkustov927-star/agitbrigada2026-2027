@@ -57,7 +57,7 @@ async function openApp(session) {
   }
   window.AGIT = { supabase, session, membership, projectId: membership.project_id, role: membership.role, projectCode: PROJECT_CODE };
   showApp();
-  await import('./app.js');
+  await import('./app-v2.js');
 }
 
 form.addEventListener('submit', async (event) => {
