@@ -1,0 +1,14 @@
+.auth-screen{background:linear-gradient(rgba(40,24,20,.8),rgba(40,24,20,.8)),url('./assets/hero-frontovaya.svg') center/cover fixed}
+.auth-card{border-radius:8px;border:1px solid #b68a51;background:linear-gradient(145deg,#fff2d7,#e4bf87);box-shadow:0 30px 80px rgba(0,0,0,.34)}
+.auth-brand{justify-content:center;margin-bottom:22px}.auth-brand .brand-mark{width:270px;height:auto}.auth-brand .brand-mark img{display:block;width:100%;height:auto}.auth-brand>div:last-child{display:none}
+.auth-card h1{font-family:Impact,"Arial Narrow",sans-serif;text-transform:uppercase;color:#251b17}.auth-form input{border-radius:4px;border-color:#b99362;background:#fff9ec}
+.sidebar{background:linear-gradient(180deg,rgba(55,29,25,.98),rgba(91,20,24,.98)),url('./assets/hero-frontovaya.svg') center/cover;border-right:4px solid #b7863f}
+.sidebar .brand{display:block;padding:18px 16px 14px}.sidebar .brand-mark{width:100%;height:auto;padding:8px;border:1px solid rgba(255,235,196,.34);background:rgba(255,237,201,.93)}.sidebar .brand-mark img{display:block;width:100%;height:auto}.sidebar .brand>div:last-child{display:none}
+.nav button{border-radius:4px;font-family:"Arial Narrow","Liberation Sans Narrow",Arial,sans-serif;font-size:15px;font-weight:900;letter-spacing:.3px;text-transform:uppercase}.nav button:hover{background:rgba(255,236,201,.12)}.nav button.active{background:linear-gradient(90deg,#b52c21,#8a191d);box-shadow:inset 4px 0 0 #e3bf76}.sidebar-foot{border-top-color:rgba(255,231,192,.2)}
+.topbar{border-bottom:1px solid rgba(83,48,30,.22);background:linear-gradient(90deg,#f5e3bf,#fff5dd);box-shadow:0 8px 24px rgba(55,34,23,.07)}.topbar .eyebrow{color:var(--fa-red);font-family:"Arial Narrow",Arial,sans-serif;font-weight:900;letter-spacing:1.1px;text-transform:uppercase}.topbar h1{font-family:Impact,"Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.35px;color:#281d18}
+.content{background:linear-gradient(rgba(252,244,228,.92),rgba(252,244,228,.92)),repeating-linear-gradient(0deg,rgba(89,54,31,.025) 0 1px,transparent 1px 4px)}
+.btn{border-radius:4px}.btn-primary{background:linear-gradient(135deg,#a6251d,#71161a);border-color:#71161a}.btn-primary:hover{background:linear-gradient(135deg,#b72b21,#841b1f)}
+.card,.v3-card,.v3-project-card,.v3-next-card,.v3-kpi,.v3-event,.v3-team-member,.v3-access-card{border-radius:7px;border-color:rgba(88,52,31,.2);box-shadow:0 10px 28px rgba(58,35,22,.06)}
+.v3-kpi{border-top:5px solid var(--fa-red)}.v3-kpi-value{font-family:Impact,"Arial Narrow",sans-serif;color:#2a1f1a}
+.v3-card-head h3,.v3-project-card h3,.v3-next-card h3{font-family:"Arial Narrow","Liberation Sans Narrow",Arial,sans-serif;font-weight:900;text-transform:uppercase}
+.timeline-shell{border-radius:7px;border-color:rgba(86,49,29,.22)}.timeline-tab.active{background:var(--fa-red);color:#fff2d8}
