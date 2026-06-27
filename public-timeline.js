@@ -1,4 +1,5 @@
 import './timeline-shared.css';
+import './brand-refresh.js';
 
 const publicCalendar = document.getElementById('calendar');
 const publicCards = publicCalendar?.querySelector('.public-calendar-list');
