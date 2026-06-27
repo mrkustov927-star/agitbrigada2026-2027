@@ -4,6 +4,21 @@ import './brand-app.css';
 import './brand-responsive.css';
 
 const logoUrl = new URL('./assets/logo-frontovaya.svg', import.meta.url).href;
+const faviconUrl = new URL('./assets/favicon-frontovaya.svg', import.meta.url).href;
+
+function installHeadBrand() {
+  let icon = document.querySelector('link[rel="icon"]');
+  if (!icon) {
+    icon = document.createElement('link');
+    icon.rel = 'icon';
+    document.head.append(icon);
+  }
+  icon.type = 'image/svg+xml';
+  icon.href = faviconUrl;
+
+  const theme = document.querySelector('meta[name="theme-color"]');
+  if (theme) theme.content = '#681319';
+}
 
 function replaceBrandMarks() {
   document.querySelectorAll('.public-logo .brand-mark, .auth-brand .brand-mark, .sidebar .brand-mark')
@@ -49,6 +64,7 @@ function refreshHero() {
 }
 
 function installBrand() {
+  installHeadBrand();
   replaceBrandMarks();
   refreshHero();
 }
