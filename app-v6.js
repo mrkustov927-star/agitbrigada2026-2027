@@ -2,6 +2,7 @@ import './app-v5.js';
 import './team-access.js';
 import './page-heading-fix.css';
 import './report-export.js';
+import './dashboard-assistant.js';
 
 const snapshotContext = window.AGIT;
 
