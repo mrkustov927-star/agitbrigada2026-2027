@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" role="img" aria-labelledby="title desc">
+  <title id="title">Фирменный фон проекта «Фронтовая агитбригада»</title>
+  <desc id="desc">Старая бумага, красные мазки, карта Карельского фронта, самолёты, письма и силуэты агитбригады</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#ead3aa"/>
+      <stop offset=".45" stop-color="#f3dfba"/>
+      <stop offset="1" stop-color="#d3aa72"/>
+    </linearGradient>
+    <radialGradient id="fade" cx="38%" cy="45%" r="75%">
+      <stop stop-color="#fff3d8" stop-opacity=".72"/>
+      <stop offset="1" stop-color="#8a5426" stop-opacity=".14"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="4" seed="19" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="mono"/>
+      <feComponentTransfer in="mono" result="soft">
+        <feFuncA type="table" tableValues="0 .18"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="soft" mode="multiply"/>
+    </filter>
+    <filter id="rough" x="-10%" y="-30%" width="120%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="8"/>
+    </filter>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" fill="none" stroke="#4e3827" stroke-opacity=".08" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="760" fill="url(#paper)"/>
+  <rect width="1600" height="760" fill="url(#fade)"/>
+  <rect width="1600" height="760" fill="url(#grid)"/>
+
+  <g filter="url(#rough)" opacity=".92">
+    <path d="M-80 115C170 15 315 36 570 147 415 184 287 224 87 327-35 259-89 190-80 115Z" fill="#9e2019"/>
+    <path d="M-42 255C160 180 302 195 536 296 357 302 198 340 5 436Z" fill="#7c1718" opacity=".78"/>
+    <path d="M114 548c237-74 473-91 782-33-178 19-352 63-572 149Z" fill="#a3261e" opacity=".22"/>
+  </g>
+
+  <g transform="translate(965 20)" fill="none" stroke="#49321f" stroke-opacity=".38" stroke-width="2">
+    <path d="M12 20c65 51 121 53 165 93 43 40 53 91 106 118 49 25 88 4 135 27 57 29 79 89 139 115 39 16 72 10 119 34"/>
+    <path d="M43 107c71-15 123 12 183 54 68 48 139 51 203 91 64 39 98 101 171 135"/>
+    <path d="M136 3c-5 78 18 121 29 187 11 63-4 113 13 171 19 63 70 102 84 169"/>
+    <path d="M286 21c-4 66 17 104 14 162-4 66-41 101-37 163 3 53 34 86 35 143"/>
+    <path d="M441 53c-19 53-6 105-29 153-24 50-70 72-89 119-20 49-11 100-33 149"/>
+    <circle cx="170" cy="157" r="9"/>
+    <circle cx="302" cy="183" r="7"/>
+    <circle cx="420" cy="258" r="8"/>
+    <text x="18" y="56" fill="#49321f" stroke="none" font-family="Georgia,serif" font-size="24">КАРЕЛЬСКИЙ ФРОНТ</text>
+    <text x="450" y="88" fill="#49321f" stroke="none" font-family="Georgia,serif" font-size="20">1941—1944</text>
+  </g>
+
+  <g fill="#2a2118" opacity=".78">
+    <path d="M795 93l99 18 42-31 10 7-25 31 43 8-3 15-51-4-27 32-11-6 14-31-95-14Z"/>
+    <path d="M1018 120l63 10 28-20 7 5-16 21 29 5-2 10-35-3-18 21-8-4 9-21-60-9Z" opacity=".72"/>
+    <path d="M1173 176l54 8 23-17 6 4-13 18 25 4-2 8-29-2-16 18-7-3 8-18-51-8Z" opacity=".58"/>
+  </g>
+
+  <g transform="translate(1100 478) rotate(-7)">
+    <path d="M0 0h230v150H0z" fill="#c99f68" stroke="#6e4d2e" stroke-opacity=".5"/>
+    <path d="M0 0l115 83L230 0M0 150l82-68M230 150l-81-68" fill="none" stroke="#6e4d2e" stroke-opacity=".55" stroke-width="3"/>
+    <text x="47" y="120" fill="#7e2a1f" font-family="Georgia,serif" font-size="28" font-style="italic">Ждём с Победой!</text>
+    <path d="M196 98l8 17 19 3-14 13 4 19-17-9-17 9 4-19-14-13 19-3Z" fill="#9e2019"/>
+  </g>
+
+  <g transform="translate(1315 520) rotate(8)" opacity=".84">
+    <rect width="245" height="180" fill="#d6b37f" stroke="#6c4c31"/>
+    <path d="M16 30h204M18 58h173M17 87h206M22 117h181M15 146h210" stroke="#6c4c31" stroke-opacity=".42"/>
+  </g>
+
+  <g transform="translate(640 520)" fill="#211d18" opacity=".82">
+    <path d="M12 145c20-60 61-82 89-82s69 24 87 82ZM75 63c-10-17-2-40 17-48 20-8 43 4 47 25 4 20-11 39-31 41-14 1-26-5-33-18Z"/>
+    <path d="M170 145c22-57 58-78 86-78 30 0 66 23 87 78ZM229 69c-9-18 1-40 21-47 21-7 42 6 45 27 2 19-13 37-33 38-14 1-26-6-33-18Z"/>
+    <path d="M326 145c21-62 59-86 89-86 31 0 72 26 90 86ZM391 60c-8-18 2-39 22-46 20-6 40 6 44 26 3 19-11 37-30 39-15 1-28-6-36-19Z"/>
+    <path d="M81 67h6v73h-6zM245 72h6v68h-6zM409 65h6v75h-6z" fill="#a3231e"/>
+  </g>
+
+  <g opacity=".17" fill="#4b321e">
+    <circle cx="610" cy="188" r="115"/>
+    <path d="M610 65l30 79 84 4-66 52 22 82-70-46-70 46 22-82-66-52 84-4Z" fill="#8e1d18"/>
+  </g>
+
+  <rect width="1600" height="760" fill="transparent" filter="url(#grain)"/>
+  <path d="M9 10C350 2 690 22 1019 9c212-8 393-4 570 8M8 748c394-16 746 14 1090 1 196-7 346-2 492-14" fill="none" stroke="#5f3f22" stroke-opacity=".45" stroke-width="5"/>
+</svg>
