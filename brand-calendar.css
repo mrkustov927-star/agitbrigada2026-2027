@@ -1,0 +1,17 @@
+.public-calendar-summary,.timeline-summary{gap:12px}.public-summary-card,.timeline-summary-item{border-radius:5px;border-color:rgba(87,51,31,.25);background:linear-gradient(145deg,#f9e8c8,#e3c08b)}
+.public-calendar-card{border-radius:7px;border-color:rgba(86,49,29,.24);background:linear-gradient(135deg,#fff5dd,#eed2a8);box-shadow:0 13px 30px rgba(64,39,25,.08)}
+.public-calendar-card-featured{border-color:rgba(141,30,27,.4);box-shadow:inset 6px 0 0 var(--fa-red),0 13px 30px rgba(64,39,25,.1)}
+.public-calendar-deadline{background:linear-gradient(155deg,#6e1519,#a4251d);color:#fff3d9}
+.public-calendar-number{font-family:Impact,"Arial Narrow",sans-serif}
+.public-calendar-content h3{font-family:"Arial Narrow","Liberation Sans Narrow",Arial,sans-serif;font-size:25px;font-weight:900;text-transform:uppercase;color:#2b201b}
+.public-calendar-tag{border-radius:3px;background:#ead0a3;color:#5a3d31}.public-calendar-tag-accent{background:#8a1c1c;color:#fff4dd}
+.public-subevent{border-color:rgba(87,51,30,.18);background:rgba(255,247,230,.62)}
+.public-team-card{border-radius:6px;border-color:rgba(86,50,31,.25);background:linear-gradient(145deg,#fff5de,#eacb9c)}
+.public-team-card-lead{box-shadow:inset 0 6px 0 var(--fa-red)}
+.public-team-initials{border-radius:3px;background:var(--fa-red);color:#fff0d4;font-family:Impact,"Arial Narrow",sans-serif}
+.public-team-card h3{font-family:"Arial Narrow","Liberation Sans Narrow",Arial,sans-serif;font-size:23px;text-transform:uppercase}
+.public-team-focus{border-radius:3px;background:#d9b178;color:#5a3a2d}
+.public-final-cta{position:relative;overflow:hidden;border-radius:7px;background:linear-gradient(110deg,rgba(49,25,23,.96),rgba(111,22,27,.95)),url('./assets/hero-frontovaya.svg') center/cover;color:#fff0d6}
+.public-final-cta::after{content:"★";position:absolute;right:4%;bottom:-55px;color:rgba(255,229,188,.12);font-size:210px}
+.public-final-cta h2{font-family:Impact,"Arial Narrow",sans-serif;text-transform:uppercase;letter-spacing:.5px}
+.public-footer{background:#261a16;color:#ead5b0;border-top:5px solid var(--fa-red)}
