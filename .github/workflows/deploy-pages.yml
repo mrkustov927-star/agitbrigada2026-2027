@@ -28,9 +28,19 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: Create hosting archive
+        run: |
+          cd dist
+          zip -r ../frontovaya-agitbrigada-hosting.zip .
+      - name: Upload hosting archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontovaya-agitbrigada-hosting
+          path: frontovaya-agitbrigada-hosting.zip
+          retention-days: 30
       - name: Configure Pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
