@@ -86,4 +86,75 @@ async function installSnapshotPublisher() {
   });
 }
 
+function installMobileNavigation() {
+  const sidebar = document.getElementById('sidebar');
+  const menuButton = document.getElementById('menuButton');
+  const nav = document.getElementById('nav');
+  const shell = document.querySelector('.app-shell');
+  if (!sidebar || !menuButton || !nav || !shell) return;
+
+  const mobileQuery = window.matchMedia('(max-width: 820px)');
+
+  let closeButton = sidebar.querySelector('.mobile-menu-close');
+  if (!closeButton) {
+    closeButton = document.createElement('button');
+    closeButton.type = 'button';
+    closeButton.className = 'mobile-menu-close';
+    closeButton.setAttribute('aria-label', 'Закрыть меню');
+    closeButton.textContent = '×';
+    sidebar.prepend(closeButton);
+  }
+
+  let backdrop = document.getElementById('mobileSidebarBackdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('button');
+    backdrop.type = 'button';
+    backdrop.id = 'mobileSidebarBackdrop';
+    backdrop.className = 'mobile-sidebar-backdrop';
+    backdrop.setAttribute('aria-label', 'Закрыть меню');
+    shell.append(backdrop);
+  }
+
+  menuButton.setAttribute('aria-controls', 'sidebar');
+  menuButton.setAttribute('aria-expanded', 'false');
+
+  const setMenuOpen = open => {
+    const shouldOpen = Boolean(open && mobileQuery.matches);
+    sidebar.classList.toggle('open', shouldOpen);
+    backdrop.classList.toggle('visible', shouldOpen);
+    document.body.classList.toggle('mobile-menu-open', shouldOpen);
+    menuButton.setAttribute('aria-expanded', String(shouldOpen));
+    menuButton.setAttribute('aria-label', shouldOpen ? 'Закрыть меню' : 'Открыть меню');
+  };
+
+  menuButton.onclick = event => {
+    event.preventDefault();
+    event.stopPropagation();
+    setMenuOpen(!sidebar.classList.contains('open'));
+  };
+
+  closeButton.onclick = () => setMenuOpen(false);
+  backdrop.onclick = () => setMenuOpen(false);
+
+  nav.addEventListener('click', event => {
+    if (event.target.closest('[data-page]')) setMenuOpen(false);
+  });
+
+  window.addEventListener('hashchange', () => setMenuOpen(false));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') setMenuOpen(false);
+  });
+
+  const handleViewportChange = event => {
+    if (!event.matches) setMenuOpen(false);
+  };
+
+  if (typeof mobileQuery.addEventListener === 'function') {
+    mobileQuery.addEventListener('change', handleViewportChange);
+  } else {
+    mobileQuery.addListener(handleViewportChange);
+  }
+}
+
 setTimeout(installSnapshotPublisher, 250);
+setTimeout(installMobileNavigation, 260);
