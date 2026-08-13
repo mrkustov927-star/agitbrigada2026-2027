@@ -24,9 +24,30 @@ const msg = document.getElementById('authMessage');
 const submit = document.getElementById('authSubmit');
 const toggle = document.getElementById('authModeButton');
 const authBackButton = document.getElementById('authBackButton');
+const emailInput = form.querySelector('input[name="email"]');
+const passwordInput = form.querySelector('input[name="password"]');
+const emailLabel = emailInput.closest('label');
+const passwordLabel = passwordInput.closest('label');
+const fullNameLabel = document.getElementById('authFullName');
+
+const forgotButton = document.createElement('button');
+forgotButton.type = 'button';
+forgotButton.id = 'authForgotButton';
+forgotButton.className = 'btn btn-ghost btn-block';
+forgotButton.textContent = 'Забыли пароль?';
+toggle.parentNode.insertBefore(forgotButton, toggle);
+
+const confirmLabel = document.createElement('label');
+confirmLabel.id = 'authPasswordConfirm';
+confirmLabel.className = 'hidden';
+confirmLabel.innerHTML = 'Повторите новый пароль<input name="password_confirm" type="password" autocomplete="new-password" minlength="8" placeholder="Повторите пароль">';
+form.insertBefore(confirmLabel, submit);
+const confirmInput = confirmLabel.querySelector('input');
+
 let mode = 'signin';
 let appOpened = false;
 let activeSession = null;
+let recoverySession = null;
 
 function message(text = '', type = '') {
   msg.textContent = text;
@@ -36,13 +57,47 @@ function message(text = '', type = '') {
 function setMode(next) {
   mode = next;
   const signup = mode === 'signup';
-  document.getElementById('authTitle').textContent = signup ? 'Регистрация участника команды' : 'Войти в штаб проекта';
-  document.getElementById('authSubtitle').textContent = signup
-    ? 'Создайте учётную запись. Доступ к данным появится после добавления пользователя руководителем проекта.'
-    : 'Используйте рабочую электронную почту и пароль.';
-  document.getElementById('authFullName').classList.toggle('hidden', !signup);
-  submit.textContent = signup ? 'Зарегистрироваться' : 'Войти';
-  toggle.textContent = signup ? 'У меня уже есть аккаунт' : 'Регистрация участника команды';
+  const forgot = mode === 'forgot';
+  const recovery = mode === 'recovery';
+
+  fullNameLabel.classList.toggle('hidden', !signup);
+  emailLabel.classList.toggle('hidden', recovery);
+  passwordLabel.classList.toggle('hidden', forgot);
+  confirmLabel.classList.toggle('hidden', !recovery);
+
+  emailInput.required = !recovery;
+  passwordInput.required = !forgot;
+  confirmInput.required = recovery;
+  passwordInput.autocomplete = recovery ? 'new-password' : 'current-password';
+
+  if (signup) {
+    document.getElementById('authTitle').textContent = 'Регистрация участника команды';
+    document.getElementById('authSubtitle').textContent = 'Создайте учётную запись. Доступ к данным появится после добавления пользователя руководителем проекта.';
+    submit.textContent = 'Зарегистрироваться';
+    toggle.textContent = 'У меня уже есть аккаунт';
+  } else if (forgot) {
+    document.getElementById('authTitle').textContent = 'Восстановить пароль';
+    document.getElementById('authSubtitle').textContent = 'Укажите электронную почту. Мы отправим ссылку для создания нового пароля.';
+    submit.textContent = 'Отправить ссылку';
+    toggle.textContent = 'Вернуться ко входу';
+  } else if (recovery) {
+    document.getElementById('authTitle').textContent = 'Создать новый пароль';
+    document.getElementById('authSubtitle').textContent = 'Ссылка восстановления подтверждена. Введите новый пароль для вашей учётной записи.';
+    submit.textContent = 'Сохранить новый пароль';
+    toggle.textContent = 'Вернуться ко входу';
+  } else {
+    document.getElementById('authTitle').textContent = 'Войти в штаб проекта';
+    document.getElementById('authSubtitle').textContent = 'Используйте рабочую электронную почту и пароль.';
+    submit.textContent = 'Войти';
+    toggle.textContent = 'Регистрация участника команды';
+  }
+
+  forgotButton.classList.toggle('hidden', mode !== 'signin');
+  toggle.classList.toggle('hidden', recovery);
+
+  if (!recovery) {
+    confirmInput.value = '';
+  }
   message();
 }
 
@@ -77,6 +132,10 @@ function showApp() {
 }
 
 function openLogin() {
+  if (mode === 'recovery') {
+    showAuth();
+    return;
+  }
   if (activeSession) {
     openApp(activeSession).catch(error => {
       appOpened = false;
@@ -94,8 +153,15 @@ document.querySelectorAll('[data-open-login]').forEach(button => {
 });
 
 authBackButton?.addEventListener('click', () => {
+  if (mode === 'recovery') return;
   setMode('signin');
   showPublic();
+});
+
+forgotButton.addEventListener('click', () => {
+  setMode('forgot');
+  showAuth();
+  emailInput.focus();
 });
 
 async function resolveMembership(user) {
@@ -125,6 +191,11 @@ async function resolveMembership(user) {
 }
 
 async function openApp(session) {
+  if (mode === 'recovery') {
+    showAuth();
+    return;
+  }
+
   if (appOpened) {
     showApp();
     return;
@@ -160,17 +231,51 @@ form.addEventListener('submit', async event => {
   const fd = new FormData(form);
   const email = String(fd.get('email') || '').trim();
   const password = String(fd.get('password') || '');
+  const passwordConfirm = String(fd.get('password_confirm') || '');
   const fullName = String(fd.get('full_name') || '').trim();
 
-  if (!email || password.length < 8) {
-    message('Укажите e-mail и пароль не короче 8 символов.', 'error');
-    return;
+  if (mode === 'forgot') {
+    if (!email) return message('Укажите электронную почту.', 'error');
+  } else if (mode === 'recovery') {
+    if (password.length < 8) return message('Новый пароль должен содержать не менее 8 символов.', 'error');
+    if (password !== passwordConfirm) return message('Пароли не совпадают.', 'error');
+  } else if (!email || password.length < 8) {
+    return message('Укажите e-mail и пароль не короче 8 символов.', 'error');
   }
 
   submit.disabled = true;
-  message(mode === 'signup' ? 'Создаём аккаунт…' : 'Выполняем вход…');
 
   try {
+    if (mode === 'forgot') {
+      message('Отправляем письмо для восстановления…');
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: AUTH_REDIRECT_URL,
+      });
+      if (error) throw error;
+      message('Ссылка отправлена. Откройте письмо и нажмите Reset password. После перехода сайт предложит создать новый пароль.', 'success');
+      return;
+    }
+
+    if (mode === 'recovery') {
+      message('Сохраняем новый пароль…');
+      const { error } = await supabase.auth.updateUser({ password });
+      if (error) throw error;
+
+      recoverySession = null;
+      activeSession = null;
+      appOpened = false;
+      await supabase.auth.signOut();
+      window.history.replaceState({}, document.title, AUTH_REDIRECT_URL);
+      setMode('signin');
+      showAuth();
+      emailInput.value = '';
+      passwordInput.value = '';
+      message('Пароль успешно изменён. Теперь войдите с новым паролем.', 'success');
+      return;
+    }
+
+    message(mode === 'signup' ? 'Создаём аккаунт…' : 'Выполняем вход…');
+
     if (mode === 'signup') {
       const { data, error } = await supabase.auth.signUp({
         email,
@@ -202,13 +307,27 @@ form.addEventListener('submit', async event => {
   }
 });
 
-toggle.addEventListener('click', () => setMode(mode === 'signin' ? 'signup' : 'signin'));
+toggle.addEventListener('click', () => {
+  if (mode === 'forgot') setMode('signin');
+  else setMode(mode === 'signin' ? 'signup' : 'signin');
+});
 
 supabase.auth.onAuthStateChange((event, session) => {
+  if (event === 'PASSWORD_RECOVERY' && session) {
+    recoverySession = session;
+    activeSession = session;
+    appOpened = false;
+    setMode('recovery');
+    showAuth();
+    setTimeout(() => passwordInput.focus(), 0);
+    return;
+  }
+
   if (event === 'SIGNED_OUT') {
     activeSession = null;
     appOpened = false;
-    window.location.reload();
+    if (mode !== 'recovery') updatePublicButtons();
+    return;
   }
 
   if (event === 'SIGNED_IN' && session) {
@@ -220,4 +339,12 @@ supabase.auth.onAuthStateChange((event, session) => {
 setMode('signin');
 const { data: { session } } = await supabase.auth.getSession();
 activeSession = session || null;
-showPublic();
+
+const recoveryInUrl = /(?:[?#&])type=recovery(?:[&#]|$)/i.test(window.location.href);
+if (recoveryInUrl && session) {
+  recoverySession = session;
+  setMode('recovery');
+  showAuth();
+} else {
+  showPublic();
+}
