@@ -158,5 +158,142 @@ function installMobileNavigation() {
   }
 }
 
+function createPasswordModal() {
+  let backdrop = document.getElementById('changePasswordBackdrop');
+  if (backdrop) return backdrop;
+
+  backdrop = document.createElement('div');
+  backdrop.id = 'changePasswordBackdrop';
+  backdrop.className = 'modal-backdrop hidden';
+  backdrop.innerHTML = `
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="changePasswordTitle" style="width:min(520px,100%)">
+      <div class="modal-head">
+        <div>
+          <div class="eyebrow">Безопасность аккаунта</div>
+          <h2 id="changePasswordTitle">Сменить пароль</h2>
+        </div>
+        <button class="icon-button" type="button" data-password-close aria-label="Закрыть">×</button>
+      </div>
+      <div class="modal-body">
+        <form id="changePasswordForm" class="form-grid" style="grid-template-columns:1fr">
+          <div class="form-group full">
+            <label>Текущий пароль</label>
+            <input name="current_password" type="password" autocomplete="current-password" minlength="8" required>
+          </div>
+          <div class="form-group full">
+            <label>Новый пароль</label>
+            <input name="new_password" type="password" autocomplete="new-password" minlength="8" required>
+          </div>
+          <div class="form-group full">
+            <label>Повторите новый пароль</label>
+            <input name="confirm_password" type="password" autocomplete="new-password" minlength="8" required>
+          </div>
+        </form>
+        <div id="changePasswordMessage" class="auth-message" style="margin-top:12px"></div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-secondary" type="button" data-password-close>Отмена</button>
+        <button class="btn btn-primary" type="submit" form="changePasswordForm" id="changePasswordSubmit">Сохранить новый пароль</button>
+      </div>
+    </section>`;
+  document.body.append(backdrop);
+
+  const close = () => {
+    backdrop.classList.add('hidden');
+    backdrop.querySelector('#changePasswordForm')?.reset();
+    const message = backdrop.querySelector('#changePasswordMessage');
+    if (message) {
+      message.textContent = '';
+      message.className = 'auth-message';
+    }
+  };
+
+  backdrop.querySelectorAll('[data-password-close]').forEach(button => button.addEventListener('click', close));
+  backdrop.addEventListener('click', event => {
+    if (event.target === backdrop) close();
+  });
+
+  backdrop.querySelector('#changePasswordForm').addEventListener('submit', async event => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const fd = new FormData(form);
+    const currentPassword = String(fd.get('current_password') || '');
+    const newPassword = String(fd.get('new_password') || '');
+    const confirmPassword = String(fd.get('confirm_password') || '');
+    const message = backdrop.querySelector('#changePasswordMessage');
+    const submitButton = backdrop.querySelector('#changePasswordSubmit');
+
+    const setMessage = (text, type = '') => {
+      message.textContent = text;
+      message.className = `auth-message ${type}`.trim();
+    };
+
+    if (newPassword.length < 8) {
+      setMessage('Новый пароль должен содержать не менее 8 символов.', 'error');
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setMessage('Новые пароли не совпадают.', 'error');
+      return;
+    }
+    if (currentPassword === newPassword) {
+      setMessage('Новый пароль должен отличаться от текущего.', 'error');
+      return;
+    }
+
+    submitButton.disabled = true;
+    setMessage('Проверяем текущий пароль…');
+
+    try {
+      const email = snapshotContext?.session?.user?.email;
+      if (!email) throw new Error('Не удалось определить e-mail текущего пользователя.');
+
+      const verify = await snapshotContext.supabase.auth.signInWithPassword({
+        email,
+        password: currentPassword,
+      });
+      if (verify.error) throw new Error('Текущий пароль указан неверно.');
+
+      setMessage('Сохраняем новый пароль…');
+      const update = await snapshotContext.supabase.auth.updateUser({ password: newPassword });
+      if (update.error) throw update.error;
+
+      setMessage('Пароль успешно изменён.', 'success');
+      snapshotToast('Пароль аккаунта успешно изменён.');
+      form.reset();
+      setTimeout(close, 1200);
+    } catch (error) {
+      const text = String(error.message || 'Не удалось изменить пароль.');
+      setMessage(text, 'error');
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+
+  return backdrop;
+}
+
+function installPasswordChange() {
+  if (!snapshotContext?.supabase || !snapshotContext?.session) return;
+  const userMenu = document.querySelector('.user-menu');
+  if (!userMenu || document.getElementById('changePasswordButton')) return;
+
+  const signOut = userMenu.querySelector('#signOut');
+  const button = document.createElement('button');
+  button.id = 'changePasswordButton';
+  button.type = 'button';
+  button.className = 'btn btn-secondary';
+  button.textContent = 'Сменить пароль';
+  button.addEventListener('click', () => {
+    const backdrop = createPasswordModal();
+    backdrop.classList.remove('hidden');
+    setTimeout(() => backdrop.querySelector('input[name="current_password"]')?.focus(), 0);
+  });
+
+  if (signOut) userMenu.insertBefore(button, signOut);
+  else userMenu.append(button);
+}
+
 setTimeout(installSnapshotPublisher, 250);
 setTimeout(installMobileNavigation, 260);
+setTimeout(installPasswordChange, 320);
