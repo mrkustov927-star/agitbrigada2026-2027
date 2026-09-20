@@ -147,7 +147,7 @@ function renderPassport(data) {
         <h3>${esc(data.project.name || 'Фронтовая агитбригада')}</h3>
         <p>${esc(data.project.description || 'Интерактивная историческая площадка и комплекс мероприятий по сохранению исторической памяти и гражданско-патриотическому воспитанию молодёжи 14–35 лет.')}</p>
         <div class="closed-passport-meta">
-          <span>Период: ${formatDate(data.project.start_date || '2026-08-01')} — ${formatDate(data.project.end_date || '2027-06-30')}</span>
+          <span>Период: ${formatDate(data.project.start_date || '2026-07-01')} — ${formatDate(data.project.end_date || '2027-06-30')}</span>
           <span>Территория: ${esc(data.project.municipality || 'Кемский муниципальный округ')}</span>
           <span>Рабочая группа: ${data.team.length} человек</span>
         </div>
@@ -194,7 +194,7 @@ function renderDetailedCalendar(data) {
             <span>просмотры: ${Number(event.plan_views || 0).toLocaleString('ru-RU')}</span>
           </div>
         </div>
-        <div class="closed-event-deadline">срок<br>${formatDate(event.due_date)}</div>
+        <div class="closed-event-deadline">рабочий срок<br>${formatDate(event.due_date)}</div>
       </div>
       <div class="closed-activity-list">
         ${activities.length ? activities.map(activity => `<div class="closed-activity-row">
