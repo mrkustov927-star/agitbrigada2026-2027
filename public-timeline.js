@@ -5,10 +5,10 @@ const publicCalendar = document.getElementById('calendar');
 const publicCards = publicCalendar?.querySelector('.public-calendar-list');
 
 if (publicCalendar && publicCards && !document.getElementById('publicTimelineHub')) {
-  const projectStart = new Date('2026-08-01T00:00:00');
+  const projectStart = new Date('2026-07-01T00:00:00');
   const projectEnd = new Date('2027-06-30T23:59:59');
   const totalMs = projectEnd - projectStart;
-  const months = ['Авг','Сен','Окт','Ноя','Дек','Янв','Фев','Мар','Апр','Май','Июн'];
+  const months = ['Июл','Авг','Сен','Окт','Ноя','Дек','Янв','Фев','Мар','Апр','Май','Июн'];
 
   const stages = [
     {n:1,title:'Визуальное оформление проекта',owner:'Иван Брунов, Анастасия Таран',status:'planned',start:'2026-08-03',end:'2026-08-20',u:0,r:0,p:1,v:500,items:[
