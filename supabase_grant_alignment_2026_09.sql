@@ -11,6 +11,10 @@
 
 begin;
 
+-- Утверждённые показатели защищены триггером. На время этой согласованной миграции
+-- отключаем только этот триггер и включаем его обратно до commit.
+alter table public.projects disable trigger protect_project_plan_trigger;
+
 alter table public.events
   add column if not exists grant_due_date date;
 
@@ -272,6 +276,8 @@ begin
     raise exception 'Смета после актуализации не сошлась: строк %, сумма %', cnt, total;
   end if;
 end $$;
+
+alter table public.projects enable trigger protect_project_plan_trigger;
 
 commit;
 
