@@ -14,7 +14,7 @@ window.PUBLIC_AGIT = {
   supabase,
   projectCode: PROJECT_CODE,
 };
-await import('./public-timeline-live.js');
+import('./public-timeline-live.js').catch(error => console.warn('[public-timeline-live]', error));
 
 const publicHome = document.getElementById('publicHome');
 const authScreen = document.getElementById('authScreen');
