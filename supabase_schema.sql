@@ -230,7 +230,8 @@ create table if not exists public.events (
   name text not null,
   description text,
   location text,
-  due_date date not null,
+  due_date date not null, -- внутренний рабочий срок команды
+  grant_due_date date, -- официальная крайняя дата строки календарного плана по заявке
   actual_date date,
   status public.event_status not null default 'planned',
   responsible_user_id uuid references auth.users(id) on delete set null,
