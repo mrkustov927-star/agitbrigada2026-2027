@@ -122,6 +122,11 @@ values
 )
 on conflict (project_id, code) do nothing;
 
+-- Официальная крайняя дата строк календарного плана из заявки.
+update public.events
+set grant_due_date = '2027-06-30'
+where project_id = 'fa202627-2026-4000-8000-000000000001'::uuid;
+
 -- Утверждённая смета: 16 строк, ровно в структуре заявки, всего 920 000 рублей.
 -- Не дробить эти строки в интерфейсе: детализацию товаров хранить в description.
 insert into public.budget_items (
